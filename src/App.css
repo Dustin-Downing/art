@@ -1,0 +1,92 @@
+.blue {
+  color: #001DFF !important;
+}
+
+.bold {
+  font-weight: 800;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+
+.relative {
+  position: relative;
+}
+
+.App {
+  text-align: center;
+  /* grey backgrond */
+  background-color: #c7adeae6;;
+  /* background-color: #dedede; */
+  /* background-color: #2f2f2f;; */
+  /* background-color: #7640aa;  */
+  color: #7640aa;
+
+  height: 100;
+  width: 100%;
+  background-image: url('./imgs/bg.jpg');
+  /* background-image: url('https://scontent-dfw5-1.cdninstagram.com/vp/9344ff6e29319ccb94cdbb7cc535f0d2/5BBC0D85/t51.2885-15/e35/29092673_187336875385179_7103598091919425536_n.jpg');
+  background-position-y: 20rem; */
+}
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  width: 100%;
+}
+
+.App-header {
+  /* background-color: #222; */
+  height: 150px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.homepage__section4 {
+  background-color: #c3c1c1;
+  background-image: url('./FullSizeRender.jpg');
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.homepage__section-img {
+  height: 80px;
+}
+
+.homepage__section3-text {
+  font-size: 1.5em;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.shop-card {
+  background-color: #6f6262;
+  background-image: url('./FullSizeRender.jpg');
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  display: inline-block;
+  border-radius: 6px;
+  margin: 20px;
+  height: 50px;
+  width: 50px;
+  padding: 20px;
+}

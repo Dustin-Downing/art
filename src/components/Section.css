@@ -1,0 +1,32 @@
+.section__continer {
+  background-color: #c3c1c1;
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 150px;
+  /* padding: 20px; */
+  color: white;
+}
+
+.section__header {
+  font-size: 2.5em;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #8080807d;
+  position: absolute;
+  width: 100%;
+}
+
+.section__footer {
+
+}
+
+.section__link {
+  font-size: .75em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.homepage__section2 {
+  background-image: url('../imgs/commission.jpg');
+}
