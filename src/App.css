@@ -18,8 +18,8 @@
 
 body {
   background-image: url('./imgs/bg.png');
-  background-position-y: -71px;
-  /* background-size: cover; */
+  background-position-y: 0px;
+  background-size: cover;
   /* @media (max-width: 12450px) {
     background-size: cover;
   } */
@@ -47,7 +47,7 @@ body {
 
 .App-header {
   /* background-color: #222; */
-  height: 150px;
+  /* height: 150px; */
   color: white;
 }
 

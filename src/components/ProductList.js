@@ -66,7 +66,11 @@ class ProductList extends React.Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          {skus.map(item => (<Product key={item.id} product={{...item, ...products[item.product]}}/>))}
+          {skus.map(item => {
+            if (item.inventory.quantity > 0) {
+              return <Product key={item.id} product={{...item, ...products[item.product]}}/>
+            }
+          })}
         </Grid>
       </div>
     )

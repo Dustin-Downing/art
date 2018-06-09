@@ -19,11 +19,21 @@ class PayButton extends React.Component {
     this.onToken = this.onToken.bind(this);
   }
 
-  async onToken(token) { // Token returned from Stripe
+  async onToken(token, addresses) { // Token returned from Stripe
+    const errorMessage = (error) => {
+      console.log('error:',error);
+      alert(`Oh no!\nThere was a problem processing your order.\nPlease email me at\n ${config.email}`)
+    }
+
+    console.log('token = ',token);
+    console.log('token2 = ',addresses);
+
+
     fetch(config.stripe.orderUrl, { // Backend API url
       method: 'POST',
       body: JSON.stringify({
         token,
+        addresses,
         charge: {
           amount: this.props.price,
           description: this.props.name +' - '+this.props.caption,
@@ -36,6 +46,7 @@ class PayButton extends React.Component {
         method: 'POST',
         body: JSON.stringify({
           token,
+          addresses,
           charge: {
             amount: this.props.price,
             description: this.props.name +' - '+this.props.caption,
@@ -46,14 +57,8 @@ class PayButton extends React.Component {
         }),
       }).then((res)=>{
         alert(`Thank you for your order ${token.card.name}.\n We're sending you a conformation email right now!`)
-      }).catch((error) => {
-        console.log('error:',error);
-        alert(`There was a problem processing your order.\nPlease contact ${config.email}`)
-      })
-    }).catch((error) => {
-      console.log('error:',error);
-      alert(`There was a problem processing your order.\nPlease contact ${config.email}`)
-    })
+      }).catch(errorMessage)
+    }).catch(errorMessage)
   }
 
   render() {
@@ -70,11 +75,11 @@ class PayButton extends React.Component {
         stripeKey={config.stripe.apiKey}
         // Note: Enabling either address option will give the user the ability to
         // fill out both. Addresses are sent as a second parameter in the token callback.
-        shippingAddress
-        billingAddress={false}
+        shippingAddress={true}
+        billingAddress={true}
         // Note: enabling both zipCode checks and billing or shipping address will
         // cause zipCheck to be pulled from billing address (set to shipping if none provided).
-        zipCode={false}
+        zipCode={true}
         allowRememberMe // "Remember Me" option (default true)
         token={this.onToken} // submit callback
         // opened={this.onOpened} // called when the checkout popin is opened (no IE6/7)
