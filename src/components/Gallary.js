@@ -12,22 +12,27 @@ import gallaryImg from '../imgs/chem.jpg';
 
 const styles = {
   card: {
+    maxWidth: 900,
     minWidth: 345,
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
+    borderRadius: 7
   },
   media: {
     height: '100px',
     paddingTop: '56.25%', // 16:9
     backgroundPosition: 'center top',
   },
+  div: {
+    marginTop: 50
+  }
 };
 
 function Gallary(props) {
   const { classes } = props;
   return (
-    <div>
+    <div className={classes.div}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}

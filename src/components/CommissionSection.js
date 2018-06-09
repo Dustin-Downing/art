@@ -17,15 +17,19 @@ import commissionImg from '../imgs/commission.jpg';
 
 const styles = theme => ({
   card: {
+    maxWidth: 900,
     minWidth: 345,
     width: "95%",
     marginLeft: "auto",
     marginRight: "auto",
+    borderRadius: 7,
   },
   media: {
     height: '100px',
     paddingTop: '56.25%', // 16:9
     backgroundPosition: 'center top',
+    borderTopRightRadius: 7,
+    borderTopLeftRadius: 7,
   },
   expand: {
     color: '#7640aa',
@@ -48,10 +52,15 @@ const styles = theme => ({
   },
   description: {
     textAlign: 'left',
+    // paddingLeft: '30%',  when on full screen
+    paddingLeft: 40, //when on moblile
   },
   button: {
     margin: theme.spacing.unit,
   },
+  div: {
+    marginTop: 50
+  }
 })
 
 class CommissionSection extends React.Component {
@@ -64,7 +73,7 @@ class CommissionSection extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.div}>
         <Card className={classes.card}>
           <CardMedia
             className={classes.media}

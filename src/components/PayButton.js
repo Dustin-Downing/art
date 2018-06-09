@@ -16,13 +16,11 @@ const styles = theme => ({
 class PayButton extends React.Component {
   constructor(props) {
     super(props);
-     // This binding is necessary to make `this` work in the callback
     this.onToken = this.onToken.bind(this);
   }
 
   async onToken(token) { // Token returned from Stripe
-    console.log('token',token);
-    const chargeRes = await fetch(config.stripe.orderUrl, { // Backend API url
+    fetch(config.stripe.orderUrl, { // Backend API url
       method: 'POST',
       body: JSON.stringify({
         token,
@@ -31,14 +29,9 @@ class PayButton extends React.Component {
           description: this.props.name +' - '+this.props.caption,
           currency: 'USD',
           sku: this.props.sku,
-          // order: res.json.order.id
         },
       }),
-    }).then((res)=>{
-      console.log('order res');
-      console.log(res);
-      console.log(res.json);
-      console.log(res.json.order.id);
+    }).then((res)=>{ return res.json()}).then((data) => {
       fetch(config.stripe.chargeUrl, { // Backend API url
         method: 'POST',
         body: JSON.stringify({
@@ -48,18 +41,23 @@ class PayButton extends React.Component {
             description: this.props.name +' - '+this.props.caption,
             currency: 'USD',
             sku: this.props.sku,
-            // order: res.json.order.id
+            order: data.order.id
           },
         }),
       }).then((res)=>{
-        alert(`Thank you for your order ${token.card.name}.\n We're sending you a conformation email right now...`)
+        alert(`Thank you for your order ${token.card.name}.\n We're sending you a conformation email right now!`)
+      }).catch((error) => {
+        console.log('error:',error);
+        alert(`There was a problem processing your order.\nPlease contact ${config.email}`)
       })
-    });
+    }).catch((error) => {
+      console.log('error:',error);
+      alert(`There was a problem processing your order.\nPlease contact ${config.email}`)
+    })
   }
 
   render() {
     const { classes, price } = this.props;
-    console.log('this.props',this.props);
     return (
       <StripeCheckout
         name="Arte By Karina" // the pop-in header title

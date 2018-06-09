@@ -14,10 +14,11 @@ function DustinApp(props) {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <CommissionSection/>
-      {/* <ShopHome/> */}
+      <ShopHome/>
       <Gallary/>
     </div>
   )
+
 }
 
 export default DustinApp;

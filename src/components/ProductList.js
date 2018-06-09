@@ -60,12 +60,8 @@ class ProductList extends React.Component {
     const { classes } = this.props;
     const { products, skus } = this.state;
 
-    const dummyInventroy = [
-      {id:1, name: 'Green Waves', caption:'cavas fluid art', price: 45, size: '12" x 12"'},
-    ]
-
-    console.log("Products: ",products);
-    console.log("skus: ",skus);
+    // console.log("Products: ",products);
+    // console.log("skus: ",skus);
 
     return (
       <div className={classes.root}>

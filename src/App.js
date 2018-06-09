@@ -1,9 +1,9 @@
 import React from 'react'
-import logo from './imgs/logo-dark.png'
+// import logo from './imgs/logo-dark.png'
 
-import ShopHome from './components/ShopHome'
-import CommissionSection from './components/CommissionSection'
-import Gallary from './components/Gallary'
+// import ShopHome from './components/ShopHome'
+// import CommissionSection from './components/CommissionSection'
+// import Gallary from './components/Gallary'
 import './App.css';
 import DustinApp from './Dustin.js';
 

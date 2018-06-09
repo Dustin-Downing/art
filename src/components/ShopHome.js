@@ -11,6 +11,9 @@ const styles = theme => ({
   bottomDiv: {
     marginBottom: 10,
   },
+  textBackground: {
+    backgroundColor: '#cececec7',
+  },
   root: {
     fontSize: "4rem",
     color: "#ffffff",
@@ -25,13 +28,16 @@ const styles = theme => ({
   div: {
     padding: "10px",
   },
+  topDiv: {
+    marginTop: 50
+  }
 });
 
 function ShopHome(props) {
   const { classes } = props;
   return (
-    <div>
-      <div>
+    <div className={classes.topDiv}>
+      <div className={classes.textBackground}>
         <Typography className={classes.root} variant="headline" component="h3">
           Shop
         </Typography>
