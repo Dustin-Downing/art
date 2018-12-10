@@ -18,8 +18,18 @@ import Divider from '@material-ui/core/Divider';
 import PayButton from './PayButton';
 
 const styles = theme => ({
-  card: {
-    // maxWidth: 400,
+  // card: {
+  //   padding: 'none',
+  // },
+  name: {
+    // color: "#001DFF",
+    color: "#7a19fd",
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  caption: {
+    fontSize: 14,
+    textAlign: 'center',
   },
   media: {
     height: 50,
@@ -70,10 +80,10 @@ class Product extends React.Component {
             title={product.name}
           />
           <CardContent className={classes.content} onClick={this.handleExpandClick}>
-            <Typography className='blue' gutterBottom variant="headline" component="h2">
+            <Typography className={classes.name} gutterBottom variant="headline" component="h2">
               {product.name}
             </Typography>
-            <Typography component="p">
+            <Typography className={classes.caption} component="p">
               {product.caption}
             </Typography>
           </CardContent>
@@ -102,7 +112,7 @@ class Product extends React.Component {
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography className='text-left' paragraph>
+                  <Typography className='text-left text-md' paragraph>
                     {product.package_dimensions.length +'" x '+ product.package_dimensions.width +'"'}
                   </Typography>
                 </Grid>
@@ -112,7 +122,7 @@ class Product extends React.Component {
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography className='text-left' paragraph>
+                  <Typography className='text-left text-md' paragraph>
                     {product.description}
                   </Typography>
                 </Grid>

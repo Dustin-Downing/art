@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 
 import ProductList from './ProductList.js';
@@ -16,40 +19,45 @@ const styles = theme => ({
   },
   root: {
     fontSize: "4rem",
-    color: "#ffffff",
+    color: "#c7adea",
     fontWeight: 700,
-    textDecoration: 'underline'
+    textDecoration: 'underline',
+    textAlign: 'center',
   },
   text: {
     color: "#001DFF",
+    fontSize: 14,
     fontWeight: 700,
-    paddingBottom: 10,
+    paddingBottom: 30,
+    textAlign: 'center',
   },
-  div: {
-    padding: "10px",
+  card: {
+    marginTop: 50,
+    maxWidth: 900,
+    minWidth: 345,
+    width: "95%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderRadius: 7,
+    padding: 'none'
   },
-  topDiv: {
-    marginTop: 50
-  }
 });
 
 function ShopHome(props) {
   const { classes } = props;
   return (
-    <div className={classes.topDiv}>
-      <div className={classes.textBackground}>
+      <Card className={classes.card}>
         <Typography className={classes.root} variant="headline" component="h3">
           Shop
         </Typography>
         <Typography className={classes.text}  component="p">
-          Explore pieces I have for sale
+          Every piece is an orignal.<br/>First come, first server.
         </Typography>
         <Divider />
-      </div>
-      <div className={classes.div}>
-        <ProductList/>
-      </div>
-    </div>
+        <CardContent>
+          <ProductList/>
+        </CardContent>
+      </Card>
   );
 }
 

@@ -16,6 +16,16 @@ import Divider from '@material-ui/core/Divider';
 import commissionImg from '../imgs/commission.jpg';
 
 const styles = theme => ({
+  name: {
+    // color: "#001DFF",
+    color: "#001DFF",
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  caption: {
+    fontSize: 15,
+    textAlign: 'center',
+  },
   card: {
     maxWidth: 900,
     minWidth: 345,
@@ -23,9 +33,10 @@ const styles = theme => ({
     marginLeft: "auto",
     marginRight: "auto",
     borderRadius: 7,
+    padding: 0,
   },
   media: {
-    height: '100px',
+    height: 300,
     paddingTop: '56.25%', // 16:9
     backgroundPosition: 'center top',
     borderTopRightRadius: 7,
@@ -48,7 +59,8 @@ const styles = theme => ({
   },
   expandText: {
     whiteSpace: 'nowrap',
-    color: '#7640aa'
+    color: '#7640aa',
+    fontSize: 15,
   },
   description: {
     textAlign: 'left',
@@ -59,7 +71,8 @@ const styles = theme => ({
     margin: theme.spacing.unit,
   },
   div: {
-    marginTop: 50
+    marginTop: 50,
+    padding: 0,
   }
 })
 
@@ -81,10 +94,10 @@ class CommissionSection extends React.Component {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <Typography gutterBottom className='blue' variant="headline" component="h2">
+            <Typography gutterBottom className={classes.name} variant="headline" component="h2">
               Commissions
             </Typography>
-            <Typography component="p">
+            <Typography component="p" className={classes.caption}>
               Custom pieces made to order.<br/>  Pick your colors, size, and style!
             </Typography>
           </CardContent>

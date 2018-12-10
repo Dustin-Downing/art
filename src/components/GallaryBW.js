@@ -8,17 +8,21 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import gallaryImg from '../imgs/chem.jpg';
+import gallaryImg from '../imgs/b-w-chem.jpg';
 
 const styles = {
+  text: {
+    fontSize: 15,
+  },
   card: {
     maxWidth: 900,
     minWidth: 345,
     width: "95%",
+    marginTop: 50,
     marginLeft: "auto",
     marginRight: "auto",
     borderRadius: 7,
-    padding: 'none',
+    padding: 0,
   },
   media: {
     height: '100px',
@@ -26,15 +30,14 @@ const styles = {
     backgroundPosition: 'center top',
   },
   div: {
-    marginTop: 50,
-    padding: 'none'
+    marginTop: 50
   }
 };
 
 function Gallary(props) {
   const { classes } = props;
   return (
-    <div className={classes.div}>
+    // <div className={classes.div}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
@@ -42,11 +45,8 @@ function Gallary(props) {
           title="Contemplative Reptile"
         />
         <CardContent>
-          <Typography gutterBottom variant="headline" className='blue' component="h2">
-            Gallary
-          </Typography>
-          <Typography component="p">
-            Fan of my art? <br/>Looking for ideas for commission pieces?<br/>Checkout all my past work!
+          <Typography className={classes.text} component="p">
+            Fan of my art? <br/>Looking for ideas for commission pieces?<br/>Checkout all my past work by clicking on the link below
           </Typography>
         </CardContent>
         <CardActions>
@@ -57,7 +57,7 @@ function Gallary(props) {
           </Button>
         </CardActions>
       </Card>
-    </div>
+    // </div>
   );
 }
 
