@@ -18,9 +18,9 @@ import Divider from '@material-ui/core/Divider';
 import PayButton from './PayButton';
 
 const styles = theme => ({
-  // card: {
-  //   padding: 'none',
-  // },
+  card: {
+    cursor: "pointer",
+  },
   name: {
     // color: "#001DFF",
     color: "#7a19fd",
@@ -72,8 +72,8 @@ class Product extends React.Component {
     const { classes, product } = this.props;
     const { expanded } = this.state;
     return (
-      <Grid item xs={!!expanded ? 12 : 6} sm={6} md={4}>
-        <Card className={classes.card}>
+      <Grid item xs={!!expanded ? 12 : 6} sm={!!expanded ? 12 : 6} md={!!expanded ? 12 : 4}>
+        <Card className={classes.card} onClick={this.handleExpandClick}>
           <CardMedia
             className={classes.media}
             image={product.image}
@@ -87,21 +87,6 @@ class Product extends React.Component {
               {product.caption}
             </Typography>
           </CardContent>
-          <CardActions className={classes.actions} disableActionSpacing>
-            <Typography className={classes.price} variant="headline">
-              ${product.price/100}
-            </Typography>
-            <IconButton
-              onClick={this.handleExpandClick}
-              className={classnames(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              aria-expanded={expanded}
-              aria-label="Show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <Divider />
             <CardContent>

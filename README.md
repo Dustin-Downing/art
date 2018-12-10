@@ -2,8 +2,10 @@
 ```
 npm start
 ```
+- A new tab on chrome will open with the site on it.
+- Saving a file auto refreshes.
 
-#Update static code
+#Deploy
 1. ```
 npm run build
 ```
