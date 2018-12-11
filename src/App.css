@@ -27,6 +27,10 @@
   white-space:nowrap;
 }
 
+h3 {
+  font-size: 18px;
+}
+
 body {
   background-image: url('./imgs/bg.png');
   background-position-y: 0px;
@@ -112,4 +116,24 @@ body * * span {
   height: 50px;
   width: 50px;
   padding: 20px;
+}
+
+.p-t {
+  padding-top: 1rem !important;
+}
+
+.p-b {
+  padding-bottom: 1rem !important;
+}
+
+.m-t {
+  margin-top: 1rem !important;
+}
+
+.m-b {
+  margin-bottom: 1rem !important;
+}
+
+.bold {
+  font-weight: 600 !important;
 }

@@ -9,6 +9,7 @@ import ShopHome from './components/ShopHome'
 import CommissionSection from './components/CommissionSection'
 import GallaryBW from './components/GallaryBW'
 import './App.css';
+import logoImg from './imgs/logo.png';
 
 
 function TabContainer(props) {
@@ -32,6 +33,12 @@ const styles = {
   },
   container: {
     padding: 0,
+  },
+  img: {
+    height: 40,
+    width: 40,
+    margin: "auto",
+    marginTop: 10
   }
 };
 
@@ -51,6 +58,7 @@ class CenteredTabs extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
+          <img className={classes.img} src={logoImg}/>
           <Tabs
             value={value}
             onChange={this.handleChange}

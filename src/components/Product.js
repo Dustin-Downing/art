@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-// import CardHeader from '@material-ui/core/CardHeader';
+import CardHeader from '@material-ui/core/CardHeader';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -14,6 +14,9 @@ import red from '@material-ui/core/colors/red';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 
 import PayButton from './PayButton';
 
@@ -33,7 +36,10 @@ const styles = theme => ({
   },
   media: {
     height: 50,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '84.25%', // this is custom for the image ratio I have   design docs say to use => '56.25%', // 16:9
+  },
+  image: {
+    height: '84.25%',
   },
   actions: {
     display: 'flex',
@@ -72,14 +78,22 @@ class Product extends React.Component {
     const { classes, product } = this.props;
     const { expanded } = this.state;
     return (
-      <Grid item xs={!!expanded ? 12 : 6} sm={!!expanded ? 12 : 6} md={!!expanded ? 12 : 4}>
+      <Grid item xs={12} sm={12} md={!!expanded ? 12 : 6}>
         <Card className={classes.card} onClick={this.handleExpandClick}>
           <CardMedia
             className={classes.media}
             image={product.image}
             title={product.name}
           />
-          <CardContent className={classes.content} onClick={this.handleExpandClick}>
+          <CardContent className={classes.content}>
+            {/* {!!product && !!product.images && product.images.length>0 && expanded
+              ? (
+                <Carousel showStatus={false} showThumbs={false} >
+                  {product.images.map( (image, i) => (<div key={i}><img src={image}/></div>) )}
+                </Carousel>
+              )
+              : <img className={classes.image} src={product.image}/>
+            } */}
             <Typography className={classes.name} gutterBottom variant="headline" component="h2">
               {product.name}
             </Typography>
@@ -88,30 +102,34 @@ class Product extends React.Component {
             </Typography>
           </CardContent>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Divider />
+            <Divider className='m-t m-b' />
             <CardContent>
-              <Grid container spacing={24}>
-                <Grid item xs={6}>
-                  <Typography className='text-right' paragraph variant="body2">
-                    <span className='bold'>Size:</span>
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography className='text-left text-md' paragraph>
-                    {product.package_dimensions.length +'" x '+ product.package_dimensions.width +'"'}
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography className='text-right' paragraph variant="body2">
-                    <span className='bold'>Discription:</span>
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography className='text-left text-md' paragraph>
-                    {product.description}
-                  </Typography>
-                </Grid>
-              </Grid>
+              <h3 className='text-left bold'>
+                Price:
+              </h3>
+              <p className='text-left text-md'>${parseFloat(product.price/100).toFixed(2)}</p>
+              <h3 className='text-left bold'>
+                Size:
+              </h3>
+              <p className='text-left text-md'>{product.package_dimensions.length +'" x '+ product.package_dimensions.width +'"'}</p>
+              <h3 className='text-left bold'>
+                Discription:
+              </h3>
+              <p className='text-left text-md'>{product.description}</p>
+              {/* <Grid container spacing={24}>
+                <Typography className='text-left' paragraph variant="body2">
+                  <span className='bold'>Size:</span>
+                </Typography>
+                <Typography className='text-left text-md' paragraph>
+                  {product.package_dimensions.length +'" x '+ product.package_dimensions.width +'"'}
+                </Typography>
+                <Typography className='text-left' paragraph variant="body2">
+                  <span className='bold'>Discription:</span>
+                </Typography>
+                <Typography className='text-left text-md' paragraph>
+                  {product.description}
+                </Typography>
+              </Grid> */}
               <PayButton {...product}/>
             </CardContent>
           </Collapse>
