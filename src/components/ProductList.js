@@ -6,6 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import config from '../config';
 import Product from './Product';
+import ProductThumbnail from './ProductThumbnail';
 
 
 const styles = theme => ({
@@ -17,6 +18,14 @@ const styles = theme => ({
     margin: "125px 16px",
   },
 })
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
+}
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -64,17 +73,36 @@ class ProductList extends React.Component {
   render() {
     const { classes } = this.props;
     const { products, skus } = this.state;
+    const productNumber = getUrlVars()['product'];
+    let productData = null
+    skus.forEach(sku => {
+      if (sku.id == productNumber && sku.inventory.quantity > 0) {
+        productData = {...sku, ...products[sku.product]}
+      }
+    })
 
     return (
       <div className={classes.root}>
         {skus.length==0 && <CircularProgress className={classes.progress} />}
-        <Grid container spacing={24}>
-          {skus.map(item => {
-            if (item.inventory.quantity > 0) {
-              return <Product key={item.id} product={{...item, ...products[item.product]}}/>
-            }
-          })}
-        </Grid>
+        { !!productNumber
+          ? (
+            <div>
+              { !!productData
+                ? <Product product={productData}/>
+                : <h1>404</h1>
+              }
+            </div>
+          )
+          : (
+            <Grid container spacing={24}>
+              {skus.map(item => {
+                if (item.inventory.quantity > 0) {
+                  return <ProductThumbnail key={item.id} product={{...item, ...products[item.product]}}/>
+                }
+              })}
+            </Grid>
+          )
+        }
       </div>
     )
   }

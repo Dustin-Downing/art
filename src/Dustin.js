@@ -20,6 +20,15 @@ function TabContainer(props) {
   );
 }
 
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
+}
+
+
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
@@ -44,11 +53,15 @@ const styles = {
 
 class CenteredTabs extends React.Component {
   state = {
-    value: 0,
+    value: (!!getUrlVars()['product']) ? 1 : 0,
   };
 
   handleChange = (event, value) => {
     this.setState({ value });
+  };
+
+  clearParams = () => {
+    window.history.replaceState({},'',window.location.pathname+window.location.hash)
   };
 
   render() {
@@ -66,9 +79,9 @@ class CenteredTabs extends React.Component {
             textColor="primary"
             centered
           >
-            <Tab className={classes.text} label="Gallary" />
-            <Tab className={classes.text} label="Store" />
-            <Tab className={classes.text} label="Commission Request" />
+            <Tab className={classes.text} label="Gallary" onClick={this.clearParams}/>
+            <Tab className={classes.text} label="Store" onClick={this.clearParams}/>
+            <Tab className={classes.text} label="Commission Request" onClick={this.clearParams}/>
           </Tabs>
         </AppBar>
         {value === 0 &&

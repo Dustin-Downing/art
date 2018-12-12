@@ -19,27 +19,20 @@ const styles = theme => ({
   },
   root: {
     fontSize: "4rem",
-    color: "#c7adea",
+    // color: "#c7adea",
     fontWeight: 700,
-    textDecoration: 'underline',
+    // textDecoration: 'underline',
     textAlign: 'center',
   },
   text: {
-    color: "#001DFF",
+    color: "rgba(0, 0, 0, 0.54)",
     fontSize: 14,
     fontWeight: 700,
     paddingBottom: 30,
     textAlign: 'center',
   },
   card: {
-    marginTop: 50,
-    maxWidth: 900,
-    minWidth: 345,
-    width: "95%",
-    marginLeft: "auto",
-    marginRight: "auto",
     borderRadius: 7,
-    padding: 'none'
   },
 });
 
@@ -47,13 +40,6 @@ function ShopHome(props) {
   const { classes } = props;
   return (
       <Card className={classes.card}>
-        <Typography className={classes.root} variant="headline" component="h3">
-          Shop
-        </Typography>
-        <Typography className={classes.text}  component="p">
-          Every piece is an orignal.<br/>First come, first server.
-        </Typography>
-        <Divider />
         <CardContent>
           <ProductList/>
         </CardContent>

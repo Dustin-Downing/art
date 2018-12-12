@@ -26,10 +26,9 @@ const styles = theme => ({
   },
   name: {
     // color: "#001DFF",
-    // color: "#7a19fd",
+    color: "#7a19fd",
     textAlign: 'center',
     fontSize: 20,
-    fontWeight: 600,
   },
   caption: {
     fontSize: 14,
@@ -68,23 +67,25 @@ const styles = theme => ({
   }
 });
 
-class Product extends React.Component {
-  state = {};
+class ProductThumbnail extends React.Component {
+  state = { expanded: false };
+
+  handleExpandClick = () => {
+    document.location.search = `product=${this.props.product.sku}`
+  };
 
   render() {
     const { classes, product } = this.props;
+    const { expanded } = this.state;
     return (
-      <Grid item xs={12} sm={12} md={12}>
-        <Card className={classes.card}>
+      <Grid item xs={12} sm={12} md={6}>
+        <Card className={classes.card} onClick={this.handleExpandClick}>
+          <CardMedia
+            className={classes.media}
+            image={product.image}
+            title={product.name}
+          />
           <CardContent className={classes.content}>
-            {!!product && !!product.images && product.images.length>0
-              ? (
-                <Carousel showStatus={false} showThumbs={false} >
-                  {product.images.map( (image, i) => (<div key={i}><img src={image}/></div>) )}
-                </Carousel>
-              )
-              : <img className={classes.image} src={product.image}/>
-            }
             <Typography className={classes.name} gutterBottom variant="headline" component="h2">
               {product.name}
             </Typography>
@@ -92,30 +93,14 @@ class Product extends React.Component {
               {product.caption}
             </Typography>
           </CardContent>
-          <Divider className='m-t m-b' />
-          <CardContent>
-            <h3 className='text-left bold'>
-              Price:
-            </h3>
-            <p className='text-left text-md'>${parseFloat(product.price/100).toFixed(2)}</p>
-            <h3 className='text-left bold'>
-              Size:
-            </h3>
-            <p className='text-left text-md'>{product.package_dimensions.length +'" x '+ product.package_dimensions.width +'"'}</p>
-            <h3 className='text-left bold'>
-              Discription:
-            </h3>
-            <p className='text-left text-md'>{product.description}</p>
-            <PayButton {...product}/>
-          </CardContent>
         </Card>
       </Grid>
     );
   }
 }
 
-Product.propTypes = {
+ProductThumbnail.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Product);
+export default withStyles(styles)(ProductThumbnail);

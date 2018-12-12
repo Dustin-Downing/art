@@ -15,14 +15,14 @@ const styles = {
     fontSize: 15,
   },
   card: {
-    maxWidth: 900,
-    minWidth: 345,
-    width: "95%",
-    marginTop: 50,
-    marginLeft: "auto",
-    marginRight: "auto",
+    // maxWidth: 900,
+    // minWidth: 345,
+    // width: "95%",
+    // marginTop: 50,
+    // marginLeft: "auto",
+    // marginRight: "auto",
     borderRadius: 7,
-    padding: 0,
+    // padding: 0,
   },
   media: {
     height: '100px',
@@ -46,7 +46,7 @@ function Gallary(props) {
         />
         <CardContent>
           <Typography className={classes.text} component="p">
-            Fan of my art? <br/>Looking for ideas for commission pieces?<br/>Checkout all my past work by clicking on the link below
+            Fan of my art? <br/>Looking for ideas for commission pieces?<br/>Checkout all my past work on my Instagram
           </Typography>
         </CardContent>
         <CardActions>
