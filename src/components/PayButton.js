@@ -56,7 +56,7 @@ class PayButton extends React.Component {
           },
         }),
       }).then((res)=>{
-        alert(`Thank you for your order ${token.card.name}.\n We're sending you a conformation email right now!`)
+        alert(`Thank you for your order ${token.card.name}!`)
       }).catch(errorMessage)
     }).catch(errorMessage)
   }
@@ -67,7 +67,7 @@ class PayButton extends React.Component {
       <StripeCheckout
         name="Arte By Karina" // the pop-in header title
         description="Fluid Art Creations" // the pop-in header subtitle
-        image="//i.imgur.com/wwPYedW.jpg" // the pop-in header image (default none)
+        image="https://s3.amazonaws.com/artebykarinaimages/logo.png" // the pop-in header image (default none)
         ComponentClass="div"
         panelLabel="Checkout" // prepended to the amount in the bottom pay button
         amount={price} // cents

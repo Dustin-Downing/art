@@ -2,20 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import config from '../config';
 import Product from './Product';
 import ProductThumbnail from './ProductThumbnail';
+import Loading from './Loading';
 
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     textAlign: "center",
-  },
-  progress: {
-    margin: "125px 16px",
   },
 })
 
@@ -83,24 +80,26 @@ class ProductList extends React.Component {
 
     return (
       <div className={classes.root}>
-        {skus.length==0 && <CircularProgress className={classes.progress} />}
         { !!productNumber
           ? (
             <div>
               { !!productData
                 ? <Product product={productData}/>
-                : <h1>404</h1>
+                : <Loading/>
               }
             </div>
           )
           : (
-            <Grid container spacing={24}>
-              {skus.map(item => {
-                if (item.inventory.quantity > 0) {
-                  return <ProductThumbnail key={item.id} product={{...item, ...products[item.product]}}/>
-                }
-              })}
-            </Grid>
+            <div>
+              {skus.length==0 && <Loading/>}
+              <Grid container spacing={24}>
+                {skus.map(item => {
+                  if (item.inventory.quantity > 0) {
+                    return <ProductThumbnail key={item.id} product={{...item, ...products[item.product]}}/>
+                  }
+                })}
+              </Grid>
+            </div>
           )
         }
       </div>

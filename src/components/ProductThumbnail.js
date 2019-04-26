@@ -23,10 +23,11 @@ import PayButton from './PayButton';
 const styles = theme => ({
   card: {
     cursor: "pointer",
+    borderRadius: 7,
   },
   name: {
     // color: "#001DFF",
-    color: "#7a19fd",
+    color: "#3458aa",
     textAlign: 'center',
     fontSize: 20,
   },
@@ -78,7 +79,7 @@ class ProductThumbnail extends React.Component {
     const { classes, product } = this.props;
     const { expanded } = this.state;
     return (
-      <Grid item xs={12} sm={12} md={6}>
+      <Grid item xs={12} sm={6} md={4}>
         <Card className={classes.card} onClick={this.handleExpandClick}>
           <CardMedia
             className={classes.media}

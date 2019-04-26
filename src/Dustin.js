@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography';
-import ShopHome from './components/ShopHome'
+import ProductList from './components/ProductList'
 import CommissionSection from './components/CommissionSection'
 import GallaryBW from './components/GallaryBW'
 import './App.css';
@@ -43,17 +43,19 @@ const styles = {
   container: {
     padding: 0,
   },
-  img: {
-    height: 40,
-    width: 40,
+  imgContainer: {
     margin: "auto",
+  },
+  img: {
+    height: 80,
+    width: 80,
     marginTop: 10
   }
 };
 
 class CenteredTabs extends React.Component {
   state = {
-    value: (!!getUrlVars()['product']) ? 1 : 0,
+    value: (!!getUrlVars()['product']) ? 1 : 1, //always showing shop anyway, could AB test this
   };
 
   handleChange = (event, value) => {
@@ -71,7 +73,9 @@ class CenteredTabs extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
-          <img className={classes.img} src={logoImg}/>
+          <div className={classes.imgContainer}>
+            <img className={classes.img} src={logoImg}/>
+          </div>
           <Tabs
             value={value}
             onChange={this.handleChange}
@@ -88,7 +92,7 @@ class CenteredTabs extends React.Component {
           <TabContainer className={classes.container}><GallaryBW/></TabContainer>
         }
         {value === 1 &&
-          <TabContainer><ShopHome/></TabContainer>
+          <TabContainer><ProductList/></TabContainer>
         }
         {value === 2 &&
           <TabContainer><CommissionSection/></TabContainer>
